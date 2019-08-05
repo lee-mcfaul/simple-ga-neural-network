@@ -28,6 +28,7 @@ pipeline {
                 }
             }
             steps {
+                sh "cat .git/jgitflow.log"
                 withCredentials([[$class          : 'UsernamePasswordMultiBinding', credentialsId: 'github_login',
                                   usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
                     sh 'mvn -B -Dgit.username=$GIT_USERNAME -Dgit.password=$GIT_PASSWORD jgitflow:release-start jgitflow:release-finish'
