@@ -11,10 +11,10 @@ pipeline {
             steps {
                 parallel(
                         unit: {
-                            sh 'mvn test -p UnitTest'
+                            sh 'mvn test -P UnitTest'
                         },
                         functional: {
-                            sh 'mvn test -p FunctionalTest'
+                            sh 'mvn test -P FunctionalTest'
                         }
                 )
             }
