@@ -9,14 +9,14 @@ pipeline {
         }
         stage('Test') {
             steps {
-                parallel {
-                    unit: {
-                        sh 'mvn test -Dtestcase.groups=com.lee.mcfaul.github.simple.ga.neural.network.categories.Categories.UnitTest'
-                    }
-                    functional: {
-                        sh 'mvn test -Dtestcase.groups=com.lee.mcfaul.github.simple.ga.neural.network.categories.Categories.FunctionalTest'
-                    }
-                }
+                parallel(
+                        unit: {
+                            sh 'mvn test -Dtestcase.groups=com.lee.mcfaul.github.simple.ga.neural.network.categories.Categories.UnitTest'
+                        },
+                        functional: {
+                            sh 'mvn test -Dtestcase.groups=com.lee.mcfaul.github.simple.ga.neural.network.categories.Categories.FunctionalTest'
+                        }
+                )
             }
         }
         stage('Deploy') {
