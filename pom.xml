@@ -85,7 +85,6 @@
                     <password>${git.password}</password>
                     <noDeploy>true</noDeploy>
                     <scmCommentPrefix>jgitflow-</scmCommentPrefix>
-                    <allowUntracked>true</allowUntracked>
                 </configuration>
             </plugin>
         </plugins>
