@@ -11,10 +11,10 @@ pipeline {
             steps {
                 parallel(
                         unit: {
-                            sh 'mvn test -Dtestcase.groups=com.lee.mcfaul.github.simple.ga.neural.network.categories.Categories.UnitTest'
+                            sh 'mvn test -p UnitTest'
                         },
                         functional: {
-                            sh 'mvn test -Dtestcase.groups=com.lee.mcfaul.github.simple.ga.neural.network.categories.Categories.FunctionalTest'
+                            sh 'mvn test -p FunctionalTest'
                         }
                 )
             }
