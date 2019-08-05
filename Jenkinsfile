@@ -21,10 +21,12 @@ pipeline {
         }
         stage('Deploy') {
             when {
-                not {
-                    changelog "jgitflow-*"
+                allOf {
+                    not {
+                        changelog "jgitflow-*"
+                    }
+                    branch: "develop"
                 }
-                branch: "develop"
             }
             steps {
                 withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'github_login',
