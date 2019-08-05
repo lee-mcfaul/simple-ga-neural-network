@@ -25,7 +25,7 @@ pipeline {
                     not {
                         changelog "jgitflow-*"
                     }
-                    branch: "develop"
+                    branch "develop"
                 }
             }
             steps {
