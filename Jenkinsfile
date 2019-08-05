@@ -1,17 +1,12 @@
 pipeline {
     agent any
-
+    checkout([
+            $class           : 'GitSCM',
+            branches         : scm.branches,
+            extensions       : scm.extensions + [[$class: 'LocalBranch', localBranch: '']],
+            userRemoteConfigs: scm.userRemoteConfigs
+    ])
     stages {
-        stage('Checkout') {
-            steps {
-                checkout([
-                        $class           : 'GitSCM',
-                        branches         : scm.branches,
-                        extensions       : scm.extensions + [[$class: 'LocalBranch', localBranch: '']],
-                        userRemoteConfigs: scm.userRemoteConfigs
-                ])
-            }
-        }
         stage('Build') {
             steps {
                 sh 'mvn compile'
