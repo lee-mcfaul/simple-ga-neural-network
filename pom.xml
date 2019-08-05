@@ -29,14 +29,13 @@
         <profile>
             <id>UnitTest</id>
             <properties>
-                <testcase.groups>com.lee.mcfaul.github.simple.ga.neural.network.categories.Categories.UnitTest
-                </testcase.groups>
+                <testcase.groups>com.lee.mcfaul.github.simple.ga.neural.network.categories.UnitTest</testcase.groups>
             </properties>
         </profile>
         <profile>
             <id>FunctionalTest</id>
             <properties>
-                <testcase.groups>com.lee.mcfaul.github.simple.ga.neural.network.categories.Categories.FunctionalTest
+                <testcase.groups>com.lee.mcfaul.github.simple.ga.neural.network.categories.FunctionalTest
                 </testcase.groups>
             </properties>
         </profile>
@@ -56,12 +55,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.13</version>
+                <version>3.0.0-M3</version>
                 <dependencies>
                     <dependency>
                         <groupId>org.apache.maven.surefire</groupId>
                         <artifactId>surefire-junit47</artifactId>
-                        <version>2.13</version>
+                        <version>3.0.0-M3</version>
                     </dependency>
                 </dependencies>
                 <configuration>
