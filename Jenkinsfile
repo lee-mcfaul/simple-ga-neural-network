@@ -19,17 +19,12 @@ pipeline {
             }
         }
         stage('Release') {
-            steps{
-                sh 'mvn --version'
-                sh 'mvn -Dresume=false -DdryRun=true release:prepare -Psign-artifacts-with-ogc -DreleaseVersion=${releaseVersion} -DdevelopmentVersion=${developmentVersion}'
-                //sh 'mvn -Dresume=false release:prepare release:perform -Psign-artifacts-with-ogc -DreleaseVersion=${releaseVersion} -DdevelopmentVersion=${developmentVersion}'
+            when{
+                branch 'master'
             }
-        }
-        stage('Publication of site') {
             steps{
                 sh 'mvn --version'
-                sh 'git checkout ${releaseVersion}'
-                sh 'mvn clean install site site:stage scm-publish:publish-scm'
+                sh 'mvn -Dresume=false release:prepare release:perform -DreleaseVersion=${releaseVersion} -DdevelopmentVersion=${developmentVersion} -DskipTests=true'
             }
         }
     }
