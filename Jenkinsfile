@@ -1,6 +1,5 @@
 pipeline {
     agent any
-
     stages {
         stage('Build') {
             steps {
@@ -19,20 +18,18 @@ pipeline {
                 )
             }
         }
-        stage('Deploy') {
-            when {
-                allOf {
-                    not {
-                        changelog "jgitflow-*"
-                    }
-                    branch: "develop"
-                }
+        stage('Release') {
+            steps{
+                sh 'mvn --version'
+                sh 'mvn -Dresume=false -DdryRun=true release:prepare -Psign-artifacts-with-ogc -DreleaseVersion=${releaseVersion} -DdevelopmentVersion=${developmentVersion}'
+                //sh 'mvn -Dresume=false release:prepare release:perform -Psign-artifacts-with-ogc -DreleaseVersion=${releaseVersion} -DdevelopmentVersion=${developmentVersion}'
             }
-            steps {
-                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'github_login',
-                                  usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
-                    sh 'mvn -Dgit.username=$GIT_USERNAME -Dgit.password=$GIT_PASSWORD jgitflow jgitflow:release-start jgitflow:release-finish'
-                }
+        }
+        stage('Publication of site') {
+            steps{
+                sh 'mvn --version'
+                sh 'git checkout ${releaseVersion}'
+                sh 'mvn clean install site site:stage scm-publish:publish-scm'
             }
         }
     }
