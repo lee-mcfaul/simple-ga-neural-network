@@ -101,6 +101,7 @@
                     <autoVersionSubmodules>true</autoVersionSubmodules>
                     <tagNameFormat>@{project.version}</tagNameFormat>
                     <releaseProfiles>release</releaseProfiles>
+                    <scmCommentPrefix>RELEASE-PLUGIN_</scmCommentPrefix>
                 </configuration>
             </plugin>
             <plugin>
@@ -123,4 +124,8 @@
             <url>https://github.com/lee-mcfaul/simple-ga-neural-network</url>
         </site>
     </distributionManagement>
+
+    <scm>
+        <developerConnection>scm:git:https://github.com/lee-mcfaul/simple-ga-neural-network</developerConnection>
+    </scm>
 </project>
