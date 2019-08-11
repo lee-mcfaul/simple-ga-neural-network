@@ -18,21 +18,13 @@ pipeline {
                 )
             }
         }
-        stage('Deploy') {
-            when {
-                allOf {
-                    not {
-                        changelog "jgitflow-*"
-                    }
-                    branch "develop"
-                }
+        stage('Release') {
+            when{
+                branch 'master'
             }
-            steps {
-                sh "git clean -d -f ."
-                withCredentials([[$class          : 'UsernamePasswordMultiBinding', credentialsId: 'github_login',
-                                  usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
-                    sh 'mvn -B -Dgit.username=$GIT_USERNAME -Dgit.password=$GIT_PASSWORD jgitflow:release-start jgitflow:release-finish'
-                }
+            steps{
+                sh 'mvn --version'
+                sh 'mvn -Dresume=false release:prepare release:perform -DreleaseVersion=${releaseVersion} -DdevelopmentVersion=${developmentVersion} -DskipTests=true'
             }
         }
     }
