@@ -1,10 +1,9 @@
 package com.lee.mcfaul.github.simple.ga.neural.network.nn;
 
 import com.google.common.base.Preconditions;
+import java.util.Random;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-
-import java.util.Random;
 
 /**
  * A perceptron is a basic unit of a nerual network. It is meant to emulate the behavior of neuron cells. A given number
@@ -123,5 +122,13 @@ import java.util.Random;
 			sum += input[i] * weights[i];
 		}
 		return (sum > threshold) ? 1 : 0;
+	}
+
+	@Override
+	public Perceptron clone() {
+
+		double[] cloneWeights = new double[weights.length];
+		System.arraycopy(weights, 0, cloneWeights, 0, weights.length);
+		return new Perceptron(cloneWeights, threshold, mutationRate, mutationMagnitude);
 	}
 }
