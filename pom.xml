@@ -10,6 +10,11 @@
 
   <dependencies>
     <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>27.1-jre</version>
+    </dependency>
+    <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <version>1.18.6</version>
@@ -25,43 +30,6 @@
   <properties>
     <java.version>1.8</java.version>
   </properties>
-
-  <profiles>
-    <profile>
-      <id>UnitTest</id>
-      <properties>
-        <testcase.groups>com.lee.mcfaul.github.simple.ga.neural.network.categories.UnitTest
-        </testcase.groups>
-      </properties>
-    </profile>
-    <profile>
-      <id>FunctionalTest</id>
-      <properties>
-        <testcase.groups>com.lee.mcfaul.github.simple.ga.neural.network.categories.FunctionalTest
-        </testcase.groups>
-      </properties>
-    </profile>
-    <profile>
-      <id>release</id>
-      <build>
-        <plugins>
-          <plugin>
-            <artifactId>maven-gpg-plugin</artifactId>
-            <version>1.6</version>
-            <executions>
-              <execution>
-                <id>sign-artifacts</id>
-                <phase>verify</phase>
-                <goals>
-                  <goal>sign</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
 
   <build>
     <plugins>
@@ -85,9 +53,6 @@
             <version>2.22.2</version>
           </dependency>
         </dependencies>
-        <configuration>
-          <groups>${testcase.groups}</groups>
-        </configuration>
       </plugin>
     </plugins>
   </build>
