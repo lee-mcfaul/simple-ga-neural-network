@@ -17,8 +17,8 @@ public class NeuralNetworkTest {
   public void setup() {
     Perceptron p = new Perceptron(new double[]{1, 2}, 2, 0, 0);
 
-    Perceptron[] firstLayer = new Perceptron[]{p, p.clone()};
-    Perceptron[] secondLayer = new Perceptron[]{p.clone()};
+    Perceptron[] firstLayer = new Perceptron[]{p, new Perceptron(p)};
+    Perceptron[] secondLayer = new Perceptron[]{new Perceptron(p)};
 
     List<Perceptron[]> layers = new ArrayList<>();
     layers.add(firstLayer);
@@ -47,11 +47,11 @@ public class NeuralNetworkTest {
     List<Perceptron[]> layersA = new ArrayList<>();
     List<Perceptron[]> layersB = new ArrayList<>();
 
-    layersA.add(new Perceptron[]{a, a.clone()});
-    layersA.add(new Perceptron[]{a, a.clone()});
+    layersA.add(new Perceptron[]{a, new Perceptron(a)});
+    layersA.add(new Perceptron[]{a, new Perceptron(a)});
 
-    layersB.add(new Perceptron[]{b, b.clone()});
-    layersB.add(new Perceptron[]{b, b.clone()});
+    layersB.add(new Perceptron[]{b, new Perceptron(a)});
+    layersB.add(new Perceptron[]{b, new Perceptron(a)});
 
     NeuralNetwork nnA = new NeuralNetwork(layersA);
     NeuralNetwork nnB = new NeuralNetwork(layersB);
@@ -82,7 +82,7 @@ public class NeuralNetworkTest {
   public void testMutation() {
     int[] layerlengths = new int[]{1024, 1024, 1024};
     NeuralNetwork nnA = new NeuralNetwork(layerlengths, 0.1, 1);
-    NeuralNetwork nnB = nnA.clone();
+    NeuralNetwork nnB = new NeuralNetwork(nnA);
 
     NeuralNetwork child = nnA.breed(nnB);
 

@@ -61,6 +61,21 @@ public class Perceptron {
   }
 
   /**
+   * Use to make deep copy
+   *
+   * @param perceptron to be coppied
+   */
+  public Perceptron(Perceptron perceptron) {
+
+    weights = new double[perceptron.getWeights().length];
+    System.arraycopy(perceptron.getWeights(), 0, weights, 0, weights.length);
+
+    threshold = perceptron.getThreshold();
+    mutationRate = perceptron.getMutationRate();
+    mutationMagnitude = perceptron.mutationMagnitude;
+  }
+
+  /**
    * Creates a random double between -1 and 1
    *
    * @param random the instance of the object to be used to generate random doubles.
@@ -125,13 +140,5 @@ public class Perceptron {
       sum += input[i] * weights[i];
     }
     return (sum > threshold) ? 1 : 0;
-  }
-
-  @Override
-  public Perceptron clone() {
-
-    double[] cloneWeights = new double[weights.length];
-    System.arraycopy(weights, 0, cloneWeights, 0, weights.length);
-    return new Perceptron(cloneWeights, threshold, mutationRate, mutationMagnitude);
   }
 }
