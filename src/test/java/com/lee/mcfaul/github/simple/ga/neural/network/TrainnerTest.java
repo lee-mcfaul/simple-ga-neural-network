@@ -31,7 +31,7 @@ public class TrainnerTest {
 
     Trainner trainner = new Trainner(new int[]{2, 2, 1}, 1000, 0.05, 0.001);
 
-    NeuralNetwork nn = trainner.train(10, data, data);
+    NeuralNetwork nn = trainner.train(100, data, data);
 
     assertEquals(data.get(0).get(1)[0], nn.calculate(data.get(0).get(0))[0], 0.0001);
     assertEquals(data.get(1).get(1)[0], nn.calculate(data.get(1).get(0))[0], 0.0001);

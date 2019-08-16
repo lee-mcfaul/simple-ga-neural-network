@@ -44,7 +44,7 @@ public class Trainner {
     NeuralNetwork highestScoringNetwork = null;
 
     double highestPossibleScore =
-        trainingSet.size() * trainingSet.get(0).get(1).length * (CORRECT_ELEMENT_VALUE
+        trainingSet.size() * trainingSet.get(0).get(1).length * (double) (CORRECT_ELEMENT_VALUE
             + PERFECT_ANSWER_VALUE);
 
     for (int i = 0; i < generations; i++) {
