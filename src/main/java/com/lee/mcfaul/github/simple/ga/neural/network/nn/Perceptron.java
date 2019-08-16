@@ -20,7 +20,7 @@ import lombok.Getter;
 public class Perceptron {
 
   private static final String BAD_INPUT_LENGTH_MSG = "Input length %d does not match expected layer length %d.";
-
+  private static final Random random = new Random();
   /**
    * Represents the wights given to this perceptron's input. There is one wight per input value so
    * the length of the array will be equal to the number of perceptrons in the previous layer or the
@@ -78,8 +78,6 @@ public class Perceptron {
    * @return a new child perceptron with traits from this perceptron and teh parent
    */
   public Perceptron breed(Perceptron secondParent) {
-
-    Random random = new Random();
 
     double[] childWeights = new double[weights.length];
     for (int i = 0; i < childWeights.length; i++) {

@@ -1,5 +1,8 @@
 [![Build Status](https://travis-ci.org/lee-mcfaul/simple-ga-neural-network.svg?branch=master)](https://travis-ci.org/lee-mcfaul/simple-ga-neural-network)
-
+&nbsp;&nbsp;&nbsp;[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=com.lee.mcfaul.github.simple.ga.neural.network%3Asimple-gann&metric=alert_status)](https://sonarcloud.io/dashboard?id=com.lee.mcfaul.github.simple.ga.neural.network%3Asimple-gann)
+&nbsp;&nbsp;&nbsp;[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=com.lee.mcfaul.github.simple.ga.neural.network%3Asimple-gann&metric=coverage)](https://sonarcloud.io/dashboard?id=com.lee.mcfaul.github.simple.ga.neural.network%3Asimple-gann)
+&nbsp;&nbsp;&nbsp;[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=com.lee.mcfaul.github.simple.ga.neural.network%3Asimple-gann&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=com.lee.mcfaul.github.simple.ga.neural.network%3Asimple-gann)
+&nbsp;&nbsp;&nbsp;[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=com.lee.mcfaul.github.simple.ga.neural.network%3Asimple-gann&metric=security_rating)](https://sonarcloud.io/dashboard?id=com.lee.mcfaul.github.simple.ga.neural.network%3Asimple-gann)
 # simple genetic algorithm neural network
 
 Simple object oriented neural network that uses a genetic algorithm to train. Note that this is incredibly inefficient and is meant to show the concepts of a neural network. Implementation of a usable GANN would require extensive rewrite and optimization to make use of arrays and array operations rather than this approach.
