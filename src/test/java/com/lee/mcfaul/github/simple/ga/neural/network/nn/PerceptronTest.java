@@ -91,7 +91,7 @@ import org.junit.experimental.categories.Category;
     double mutationMagnitude = 0;
 
     Perceptron perceptron = new Perceptron(weights, threshold, mutationRate, mutationMagnitude);
-    Perceptron clone = perceptron.clone();
+    Perceptron clone = new Perceptron(perceptron);
     double previousWeight = perceptron.getWeights()[0];
     double newWeight = 9;
     perceptron.getWeights()[0] = newWeight;

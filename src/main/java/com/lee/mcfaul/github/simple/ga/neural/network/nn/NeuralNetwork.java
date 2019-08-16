@@ -31,6 +31,27 @@ public class NeuralNetwork {
   }
 
   /**
+   * Use to make deep copy
+   */
+  public NeuralNetwork(NeuralNetwork neuralNetwork) {
+
+    List<Perceptron[]> cloneLayers = new ArrayList<>();
+
+    for (int i = 0; i < neuralNetwork.getLayers().size(); i++) {
+
+      Perceptron[] layer = neuralNetwork.getLayers().get(i);
+      Perceptron[] cloneLayer = new Perceptron[layer.length];
+
+      for (int j = 0; j < layer.length; j++) {
+        cloneLayer[j] = new Perceptron(layer[j]);
+      }
+      cloneLayers.add(cloneLayer);
+    }
+
+    layers = cloneLayers;
+  }
+
+  /**
    * Calculates the result of an input when run through this nerual network
    *
    * @param input normalized array of doubles. must be same length as first layer (input layer)
@@ -54,25 +75,6 @@ public class NeuralNetwork {
     }
 
     return layerInput;
-  }
-
-  @Override
-  public NeuralNetwork clone() {
-
-    List<Perceptron[]> cloneLayers = new ArrayList<>();
-
-    for (int i = 0; i < layers.size(); i++) {
-
-      Perceptron[] layer = layers.get(i);
-      Perceptron[] cloneLayer = new Perceptron[layer.length];
-
-      for (int j = 0; j < layer.length; j++) {
-        cloneLayer[j] = layer[j].clone();
-      }
-      cloneLayers.add(cloneLayer);
-    }
-
-    return new NeuralNetwork(cloneLayers);
   }
 
   public NeuralNetwork breed(NeuralNetwork parentB) {
