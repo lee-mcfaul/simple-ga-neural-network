@@ -50,8 +50,6 @@ public class Perceptron {
     this.mutationRate = mutationRate;
     this.mutationMagnitude = mutationMagnitude;
 
-    Random random = new Random();
-
     weights = new double[previousLayerSize];
 
     for (int i = 0; i < weights.length; i++) {
